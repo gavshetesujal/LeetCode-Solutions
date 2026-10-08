@@ -39,3 +39,21 @@ Constraints:
 The number of nodes in the list is in the range [1, 105].
 1 <= Node.val <= 10^5
 */
+class Solution {
+public:
+    ListNode* deleteMiddle(ListNode* head) {
+           if (head == NULL || head->next == NULL) {
+            return NULL;
+        }
+        ListNode* slow = head;
+        ListNode* fast = head->next->next;
+        while (fast != NULL && fast->next != NULL) {
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+        ListNode* temp = slow->next;
+        slow->next = temp->next;
+        delete temp;
+        return head;
+    }
+};
