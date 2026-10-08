@@ -28,3 +28,17 @@ All the numbers of nums are unique.
  
 Follow up: Could you implement a solution using only O(1) extra space complexity and O(n) runtime complexity?
 */
+class Solution {
+public:
+    int missingNumber(vector<int>& nums) {
+        int n =nums.size();
+        int sum = n*(n+1)/2;
+        int current_sum=0;
+        for (int i = 0 ; i < n; i++) {
+            
+            current_sum+=nums[i];
+        }
+        sum -= current_sum;
+        return sum;
+    }
+};
